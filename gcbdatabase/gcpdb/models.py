@@ -21,8 +21,8 @@ class Marker(models.Model):
 
 class Gcpdb(models.Model):
     sample_type	= models.CharField(max_length = 100, null = True, blank = True)
-    part_of_stomach = models.CharField(max_length = 100, null = True, blank = True)
     stomach_tissue_type = models.CharField(max_length = 100, null = True, blank = True)
+    part_of_stomach = models.CharField(max_length = 100, null = True, blank = True)
     no_of_patients = models.CharField(max_length = 100, null = True, blank = True)
     cohorts = models.CharField(max_length = 100, null = True, blank = True)
     validation_method = models.CharField(max_length = 100, null = True, blank = True)
@@ -38,8 +38,8 @@ class Gcpdb(models.Model):
     chemotherapy_drug_regimen = models.CharField(max_length = 100, null = True, blank = True)
     mass_spec_platforms = models.CharField(max_length = 50, null = True, blank = True)  
     mass_spec_acquisition = models.CharField(max_length = 50, null = True, blank = True)  
+    search_engine = models.CharField(max_length = 50, null = True, blank = True)
     bacterial_viral_infection = models.CharField(max_length = 50, null = True, blank = True)
-    search_engine = models.CharField(max_length = 50, null = True, blank = True) 
     remarks = models.CharField(max_length = 50, null = True, blank = True) 
     remark_on_expression = models.CharField(max_length = 50, null = True, blank = True) 
 

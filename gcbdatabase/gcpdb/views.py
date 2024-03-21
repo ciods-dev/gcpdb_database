@@ -15,7 +15,15 @@ from .serializers import GcpdbSerializers
 def home(request):
     return render(request,'gcpdb/home.html')   
 
-def quick_search(request):
+
+# to test
+
+# http://localhost:8000/gcpdb/quick_search/?protein=A0A075B6K6
+
+# as of now i have developed only for uniprot . develop for refseq also
+
+def quick_search(request):  
+
     protein = request.GET.get('protein')
     print(protein)
     if protein:
@@ -23,4 +31,14 @@ def quick_search(request):
         context = {'data' :qs }
         return render(request, 'gcpdb/qs_result.html',context)
 
+
+
+def batch_queury(request):
+    protein = request.GET.get('proteins')
+    if protein:
+        proteins = [i.strip() for i in protein.split()]
+
+        qs = Gcpdb.objects.filter(uniprot__uniprot_id__in=proteins)
+        context = {'data' :qs }
+        return render(request, 'gcpdb/batch_query_result.html',context)
 
