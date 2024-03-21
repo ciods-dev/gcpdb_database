@@ -5,4 +5,7 @@ app_name = 'gcpdb'
 
 urlpatterns = [
     path('quick_search/',views.quick_search, name='quick_search'),
+    path('',views.home,name='home'),
+    path('home/',views.home,name='home'),
+    path('faq/',views.faq,name='faq')
     ]

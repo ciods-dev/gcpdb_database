@@ -1,0 +1,544 @@
+{% extends 'gcpdb/index.html' %}
+{% load static %}
+
+{% block content %}
+<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+
+    .section-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .works-content {
+        margin-top: 20px;
+    }
+
+    .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      
+    }
+
+    /* .col-md-6 {
+        width: calc(50% - 20px);
+        margin-bottom: 20px;
+    }
+
+    @media (max-width: 768px) {
+        .col-md-6 {
+            width: 100%;
+        }
+    } */
+
+    /* canvas {
+        width: 100%;
+        height: 100%;
+    } */
+</style>
+
+<!-- top-area End -->
+
+<!--welcome-hero start -->
+<section id="home" class="welcome-hero">
+    <div class="container">
+        <div class="welcome-hero-txt">
+            <h2>Welcome to  Gastric cancer ProteomicsDb<br>  </h2>
+            <p>
+                <!-- Find Best Place, Restaurant, Hotel, Real State and many more think in just One click  -->
+            </p>
+        </div>
+        <div class="welcome-hero-serch-box">
+            <div class="welcome-hero-form">
+                <div class="single-welcome-hero-form" style="width: 100%;">
+                    <h3>what?</h3>
+                    <form action="index.html">
+                        <input type="text" placeholder="Ex: protein, peptide, drug, analytics" />
+                    </form>
+                    <!-- <div class="welcome-hero-form-icon">
+                        <i class="flaticon-list-with-dots"></i>
+                    </div> -->
+                </div>
+     
+            </div>
+            <div class="welcome-hero-serch">
+                <button class="welcome-hero-btn" onclick="window.location.href='#'">
+                     Browse  <i data-feather="search"></i> 
+                </button>
+            </div>
+        </div>
+    </div>
+
+</section>
+<br>
+<br>
+<br>
+<br>
+</section>
+
+<!--works start -->
+<section id="works" class="works">
+    <div class="container">
+        <div class="section-header">
+            <h2>About<br>Gastric Cancer Proteomics DataBase (GCPDB)</h2>
+            <p>is an openly available online repository which compiles protein biomarkers associated with gastric cancers (GC) identified through mass spectrometry-based proteomics methodologies. Currently, the database outlines differential regulation events of over 25,000 proteins in different clinical samples including cancerous tissue, blood serum or plasma, urine, saliva, stomach fluid and Formalin/Bouin fixed paraffin embedded tissues. GCPDB is an user-friendly database where you can browse information through the selection of protein/gene identifiers. The database directs to further details in the context of other experimental and clinical details. All the information is linked to their corresponding research article for further reference. The Batch Query interface allow the users to input proteins of interest to retrieve corresponding information from GCPDB dataset. 
+            </p>
+        </div><!--/.section-header-->
+
+        <br>
+        <br>
+        <br>
+
+<section id="works" class="works">
+    <div class="container">
+        <div class="section-header">
+   
+    
+
+    <section id="works" class="works">
+        <div class="container">
+            <div class="section-header">
+                <h2>Infographics of Samples and markers in GCPDB data</h2>
+                <p>GCPDB contains carefully curated data from articles reporting biomarkers for gastric cancer diagnosis, prognosis, drug susceptibility and resistance, therapy and screening in diverse clinical samples. The resource includes data from a wide array of samples in different types, grade and stages of gastric cancer and tumor location. Records regarding the validation of biomarkers, their relationship to infectious agents and details regarding the mass spectrometry platform also have been meticulously recorded.</p>
+            </div>
+            <div class="works-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- <h1 class="font-bold text-2xl text-center"> marker by type of marker</h1> -->
+                        <canvas id="myPieChart1" ></canvas>
+                        <div id="legend-container" style="position: absolute; top: 10px; right: 5px;"></div>
+
+                    </div>
+                    <div class="col-md-6">
+                        <canvas id="myPieChart2"></canvas>
+                    </div>
+                    <div class="col-md-6">
+                        <canvas id="myPieChart3"></canvas>
+                    </div>
+                    <div class="col-md-6">
+                        <canvas id="myPieChart4" ></canvas>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-6" style="width: 50%;">
+                        <canvas id="myBarChart1" style="height: 200px;"></canvas>
+                    </div>
+                    <div class="col-md-6" style="width: 50%; height: 300px;">
+                        <canvas id="myHorizontalBarChart"></canvas>
+                    </div>
+                
+                
+                    <div class="col-md-6" style="width: 50%;">
+                        <canvas id="myBarChart2" style="height: 300px;"></canvas>
+                    </div>
+                    
+                
+               
+                   
+                    <div class="col-md-6" style="width: 50%;">
+                        <canvas id="myBarChart3" style="height: 300px;"></canvas>
+                    </div>
+                
+            </div>
+        </div>   
+    </section>
+
+    <script>
+        // Data for the first pie chart
+        const piedata1 = {
+          labels: [
+            'Drug resistance',
+            'Prognostic',
+            'GC Risk assessment',
+            'Therapeutic target',
+            'Drug susceptibility',
+            'Diagnostic'
+          ],
+          datasets: [{
+            data: [0.14, 1.20, 3.46, 12.45, 12.79, 69.96],
+            backgroundColor: [
+              'rgba(147, 76, 61, 0.7)',
+              'rgba(221, 133, 33, 0.7)',
+              'rgba(165, 164, 154, 0.7)',
+              'rgba(218, 141, 238, 0.7)',
+              'rgba(248,191,86, 0.7)', 
+              'rgba(149,192,233, 0.7)'
+            ],
+          }]
+        };
+    
+        // Data for the second pie chart
+        const piedata2 = {
+          labels: [
+            'Plasma',
+            'Tissue',
+            'Serum',
+            'Paraffin Embedded tissue',
+            'Gastric fluid',
+            'Extracellular vesicles from serum',
+            'Saliva',
+            'Urine'
+          ],
+          datasets: [{
+            data: [1.26, 73.93, 2.65, 18.43, 1.32, 1.66, 0.16, 0.59],
+            backgroundColor: [
+              'rgba(228, 136, 22, 0.7)',
+              'rgba(66, 107, 184, 0.7)',
+              'rgba(232, 235, 31, 0.7)',
+              'rgba(75, 192, 192, 0.7)',
+              'rgba(218, 141, 238, 0.7)',
+              'rgba(184, 70, 92, 0.7)',
+              'rgba(144,240,94, 0.7)',
+              'rgba(54, 162, 235, 0.7)'
+            ],
+          }]
+        };
+    
+        // Data for the bar chart
+        const barData1 = {
+          labels: ['2003', '2004', '2005', '2006', '2007', '2008', '2009', '2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021',  '2022', '2023'],
+          datasets: [{
+            label: 'Year of publication',
+            data: [1, 4, 6, 4, 8, 6, 5, 7, 5, 10, 7, 4, 9, 6, 9, 8, 1, 10, 13, 13, 2],
+            backgroundColor: ['rgba(69,138,255, 0.7)'],
+            borderColor: 'rgba(69,138,255, 1)',
+            borderWidth: 1
+          }]
+        };
+    
+        // Data for the horizontal bar chart
+        const horizontalBarData = {
+          labels: ['FFPE', 'Serum', 'Tissue', 'Gastric fluid', 'Plasma', 'Serum exosomes', 'Urine', 'Saliva', 'EVs from serum', 'Tissue ECM', 'Ascites'],
+          datasets: [{
+            label: '#Samples',
+            data: [
+              { x: 6, y: 'Ascites' },
+              { x: 9, y: 'Tissue ECM' },
+              { x: 33, y: 'EVs from serum' },
+              { x: 40, y: 'Saliva' },
+              { x: 44, y: 'Urine' },
+              { x: 100, y: 'Serum exosomes' },
+              { x: 120, y: 'Plasma' },
+              { x: 193, y: 'Gastric fluid' },
+              { x: 1667, y: 'Tissue' },
+              { x: 1675, y: 'Serum' },
+              { x: 1816, y: 'FFPE' },
+              { x: -2, y: 'Ascites' },
+              { x: -1, y: 'Tissue ECM' },
+              { x: -1, y: 'EVs from serum' },
+              { x: -1, y: 'Saliva' },
+              { x: -2, y: 'Urine' },
+              { x: -2, y: 'Serum exosomes' },
+              { x: -6, y: 'Plasma' },
+              { x: -6, y: 'Gastric fluid' },
+              { x: -78, y: 'Tissue' },
+              { x: -31, y: 'Serum' },
+              { x: -10, y: 'FFPE' },
+            ],
+            backgroundColor: function(context) {
+              const value = context.dataset.data[context.dataIndex].x;
+              return value < 0 ? 'rgba(217, 121, 28, 0.7)' : 'rgba(69,138,255)';
+            },
+            borderColor: function(context) {
+              const value = context.dataset.data[context.dataIndex].x;
+              return value < 0 ? 'rgba(217, 121, 28, 1)' : 'rgba(69,138,255)';
+            },
+            borderWidth: 1
+
+          },
+          {
+        label:'#Publications',
+        backgroundColor:'rgba(217, 121, 28, 0.7)',
+        borderColor: 'rgba(217, 121, 28, 1)',
+        borderWidth:1}
+    ]
+        };
+    
+        const barData2 = {
+          labels: ['Lesser curvature', 'GE Junction', 'Diffuse', 'Non-cardia', 'Pylorus', 'Corpus', 'Whole stomach', 'Fundus', 'Upper Third', 'Middle Third', 'Cardia', 'Body', 'Lower Third', 'Antrum'],
+          datasets: [{
+            label: '#Samples',
+            data: [2, 7, 10, 15, 19, 22, 27, 41, 78, 101, 132, 156, 157, 294],
+            backgroundColor: 'rgba(54, 162, 235, 0.7)',
+            borderColor: 'rgba(54, 162, 235, 1)',
+            borderWidth: 1
+          }]
+        };
+    
+        const piedata3 = {
+        labels: ['Signet Ring Cell Carcinoma', 'Mixed', 'Diffuse', 'Intestinal'],
+        datasets: [{
+          label: '#Samples',
+          data: [71, 126, 674, 1034],
+            backgroundColor: [
+            'rgba(244,162,250, 0.7)',
+            'rgba(54, 162, 235, 0.7)',
+            'rgba(255, 206, 86, 0.7)',
+            'rgba(163,162,250, 0.7)'
+            ],
+          }]
+        };
+    
+        const piedata4 = {
+        labels: ['Moderate/Poorly Differentiated', 'Well differentiated', 'Well/Moderately differentiated', 'Moderately Differentiated', 'Poorly Differentiated'],
+        datasets: [{
+            data: [17, 92, 112, 156, 505],
+            backgroundColor: [
+            'rgba(55,144,104, 0.7)',
+            'rgba(184,249,143, 0.7)',
+            'rgba(163,162,250, 0.7)',
+            'rgba(157,208,243, 0.7)',
+            'rgba(244,162,250, 0.7)'
+            ],
+          }]
+        };
+    
+        const barData3 = {
+        labels: ['Stage-II/IV', 'Stage-I/II/III', 'Stage-I/II', 'Stage-II/III', 'Stage-III/IV', 'Stage-I', 'Stage-II', 'Stage-IV', 'Stage-III'],
+        datasets: [{
+            label: '# Samples',
+            data: [6, 35, 67, 80, 91, 466, 604, 654, 785],
+            backgroundColor: 'rgba(75, 192, 192, 0.7)',
+            borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }]
+        };
+    
+        // Options for charts
+        const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          },
+        }],
+        xAxes: [{
+          ticks: {
+            beginAtZero: true
+          },
+        }],
+      },
+      plugins: {
+        legend: {
+          display: false // Remove legend within the chart
+        }
+      }
+    };
+        
+        const options_h = {
+          indexAxis: 'y',
+          scales: {
+            xAxes: [{
+              ticks: {
+                beginAtZero: true
+              },
+              
+            }],
+             x: {
+                grid: {
+                    display: false // remove x-axis grid lines
+                },
+                },
+                 y: {
+                grid: {
+                    display: false // remove x-axis grid lines
+                },
+                }
+            
+          }
+        };
+    
+        // Create the first pie chart
+        const ctx1 = document.getElementById('myPieChart1').getContext('2d');
+        const myPieChart1 = new Chart(ctx1, {
+          type: 'pie',
+          data: piedata1,
+          options: options
+        });
+    
+        // Create the second pie chart
+        const ctx2 = document.getElementById('myPieChart2').getContext('2d');
+        const myPieChart2 = new Chart(ctx2, {
+          type: 'pie',
+          data: piedata2,
+          options: options
+        });
+    
+        const ctx6 = document.getElementById('myPieChart3').getContext('2d');
+        const myPieChart3 = new Chart(ctx6, {
+          type: 'pie',
+          data: piedata3,
+          options: options
+        });
+    
+        const ctx7 = document.getElementById('myPieChart4').getContext('2d');
+        const myPieChart4 = new Chart(ctx7, {
+          type: 'pie',
+          data: piedata4,
+          options: options
+        });
+        // Create the first bar chart
+        const ctx3 = document.getElementById('myBarChart1').getContext('2d');
+        const myBarChart1 = new Chart(ctx3, {
+          type: 'bar',
+          data: barData1,
+          options: options
+        });
+            myBarChart1.options.scales = {
+        y: {
+            grid: {
+                display: false
+            }
+        },
+        x: {
+            grid: {
+                display: false
+            }
+        }
+    };
+    myBarChart1.update();
+    
+        // Create the horizontal bar chart
+        const ctx4 = document.getElementById('myHorizontalBarChart').getContext('2d');
+        const myHorizontalBarChart = new Chart(ctx4, {
+          type: 'bar',
+          data: horizontalBarData,
+          options: options_h
+        });
+    
+    
+        // Create the second bar chart
+        const ctx5 = document.getElementById('myBarChart2').getContext('2d');
+        const myBarChart2 = new Chart(ctx5, {
+          type: 'bar',
+          data: barData2,
+          options: options
+        });
+    
+    
+    
+        const ctx8 = document.getElementById('myBarChart3').getContext('2d');
+        const myBarChart3 = new Chart(ctx8, {
+          type: 'bar',
+          data: barData3,
+          options: options
+        });
+    
+    
+    
+        myBarChart3.options.scales = {
+        y: {
+            grid: {
+                display: false
+            }
+        },
+        x: {
+            grid: {
+                display: false
+            }
+        }
+    };
+    myBarChart3.update();
+
+
+    const legendContainer = document.getElementById('legend-container');
+    legendContainer.innerHTML = `
+      <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <div style="background-color: rgba(147, 76, 61, 0.7); width: 40px; height: 10px; margin-right: 5px;"></div>
+        <div>Drug resistance</div>
+      </div>
+      <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <div style="background-color: rgba(221, 133, 33, 0.7); width: 40px; height: 10px; margin-right: 5px;"></div>
+        <div>Prognostic</div>
+      </div>
+      <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <div style="background-color: rgba(165, 164, 154, 0.7); width: 40px; height: 10px; margin-right: 5px;"></div>
+        <div>GC Risk assessment</div>
+      </div>
+      <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <div style="background-color: rgba(218, 141, 238, 0.7); width: 40px; height: 10px; margin-right: 5px;"></div>
+        <div>Therapeutic target</div>
+      </div>
+      <div style="display: flex; align-items: center; margin-bottom: 5px;">
+        <div style="background-color: rgba(248, 191, 86, 0.7); width: 40px; height: 10px; margin-right: 5px;"></div>
+        <div>Drug susceptibility</div>
+      </div>
+      <div style="display: flex; align-items: center;">
+        <div style="background-color: rgba(149, 192, 233, 0.7); width: 40px; height: 10px; margin-right: 5px;"></div>
+        <div>Diagnostic</div>
+      </div>
+    `;
+    
+    // Adjusting legend container position
+    // legendContainer.style.right = 'auto';
+    legendContainer.style.position = 'absolute';
+    legendContainer.style.right = "0px";
+    
+
+      </script>
+</body>
+    </div><!--/.container-->
+
+</section><!--/.works-->
+<!--works end -->
+
+
+</section><!--/.explore-->
+<!--explore end -->
+
+<!--reviews start -->
+
+<!-- statistics strat -->
+<section id="statistics"  class="statistics">
+    <div class="container">
+        <div class="statistics-counter"> 
+            <div class="col-md-3 col-sm-6">
+                <div class="single-ststistics-box">
+                    <div class="statistics-content">
+                        <div class="counter">90 </div> <span>K+</span>
+                    </div><!--/.statistics-content-->
+                    <h3>listings</h3>
+                </div><!--/.single-ststistics-box-->
+            </div><!--/.col-->
+            <div class="col-md-3 col-sm-6">
+                <div class="single-ststistics-box">
+                    <div class="statistics-content">
+                        <div class="counter">40</div> <span>k+</span>
+                    </div><!--/.statistics-content-->
+                    <h3>listing categories</h3>
+                </div><!--/.single-ststistics-box-->
+            </div><!--/.col-->
+            <div class="col-md-3 col-sm-6">
+                <div class="single-ststistics-box">
+                    <div class="statistics-content">
+                        <div class="counter">65</div> <span>k+</span>
+                    </div><!--/.statistics-content-->
+                    <h3>visitors</h3>
+                </div><!--/.single-ststistics-box-->
+            </div><!--/.col-->
+            <div class="col-md-3 col-sm-6">
+                <div class="single-ststistics-box">
+                    <div class="statistics-content">
+                        <div class="counter">50</div> <span>k+</span>
+                    </div><!--/.statistics-content-->
+                    <h3>happy clients</h3>
+                </div><!--/.single-ststistics-box-->
+            </div><!--/.col-->
+        </div><!--/.statistics-counter-->	
+    </div><!--/.container-->
+
+</section><!--/.counter-->	
+<!-- statistics end -->
+
+{% endblock %}
