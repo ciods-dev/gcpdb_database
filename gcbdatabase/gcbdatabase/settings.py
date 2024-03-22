@@ -27,7 +27,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-]
+    'gcbdatabase',
+ ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -134,12 +135,17 @@ USE_TZ = True
 
 
 
-STATIC_URL = '/static/static/'
-MEDIA_URL = '/static/media/'
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 
 if DEBUG:
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+    MEDIA_ROOT = os.path.join(BASE_DIR, '/media/')
+    STATIC_ROOT = os.path.join(BASE_DIR, '/static/')
 else:
     STATIC_ROOT = '/vol/web/static'
     MEDIA_ROOT = '/vol/web/media'

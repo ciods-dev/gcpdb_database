@@ -15,6 +15,10 @@ from .serializers import GcpdbSerializers
 def home(request):
     return render(request,'gcpdb/home.html')   
 
+def faq(request):
+    return render(request,'gcpdb/faq.html')   
+
+# def quick_search(request):
 
 # to test
 
