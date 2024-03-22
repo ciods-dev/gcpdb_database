@@ -60,18 +60,18 @@
         <div class="welcome-hero-serch-box">
             <div class="welcome-hero-form">
                 <div class="single-welcome-hero-form" style="width: 100%;">
-                    <h3>what?</h3>
+                    <h3>search here</h3>
                     <form action="index.html">
-                        <input type="text" placeholder="Ex: protein, peptide, drug, analytics" />
+                        <input type="text" placeholder="Ex: protein, peptide, drug, analytics" id="protein" />
                     </form>
-                    <!-- <div class="welcome-hero-form-icon">
+                    <div class="welcome-hero-form-icon">
                         <i class="flaticon-list-with-dots"></i>
-                    </div> -->
+                    </div>
                 </div>
      
             </div>
             <div class="welcome-hero-serch">
-                <button class="welcome-hero-btn" onclick="window.location.href='#'">
+                <button class="welcome-hero-btn" onclick=redirectToQSearch()>
                      Browse  <i data-feather="search"></i> 
                 </button>
             </div>
@@ -540,5 +540,14 @@
 
 </section><!--/.counter-->	
 <!-- statistics end -->
+
+
+<script>
+    function redirectToQSearch() {
+        var proteinValue = document.getElementById('protein').value;
+        var url = "{% url 'gcpdb:quick_search' %}?protein=" + encodeURIComponent(proteinValue);
+        window.location.href = url;
+    }
+</script>
 
 {% endblock %}

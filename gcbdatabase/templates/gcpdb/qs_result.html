@@ -1,12 +1,68 @@
-<html>
-    <body>
-        <h1>quick search result</h1>
+{% extends 'gcpdb/index.html' %}
+{% load static %}
+{% block content %}
 
-        {% for d in data %}
-<!-- creaet a table here and print all data -->
-        <h6>{{ d.sample_type }}</h6>
-             
-        {% endfor %}
-
-    </body>
-</html>
+<section>
+    <div class="container">
+        <h1>Quick Search Result</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Sample Type</th>
+                        <th>Stomach Tissue Type</th>
+                        <th>Part of Stomach</th>
+                        <th>No. of Patients</th>
+                        <th>Cohorts</th>
+                        <th>Validation Method</th>
+                        <th>Validation Sample Size</th>
+                        <th>Control</th>
+                        <th>Fold Change</th>
+                        <th>Over Expression</th>
+                        <th>Down Expression</th>
+                        <th>Subtype of Cancer</th>
+                        <th>Cancer Grade</th>
+                        <th>Stage</th>
+                        <th>Treatment Given</th>
+                        <th>Chemotherapy Drug Regimen</th>
+                        <th>Mass Spec Platforms</th>
+                        <th>Mass Spec Acquisition</th>
+                        <th>Search Engine</th>
+                        <th>Bacterial Viral Infection</th>
+                        <th>Remarks</th>
+                        <th>Remark on Expression</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for d in data %}
+                    <tr>
+                        <td>{{ d.sample_type }}</td>
+                        <td>{{ d.stomach_tissue_type }}</td>
+                        <td>{{ d.part_of_stomach }}</td>
+                        <td>{{ d.no_of_patients }}</td>
+                        <td>{{ d.cohorts }}</td>
+                        <td>{{ d.validation_method }}</td>
+                        <td>{{ d.validation_sample_size }}</td>
+                        <td>{{ d.control }}</td>
+                        <td>{{ d.fold_change }}</td>
+                        <td>{{ d.over_expression }}</td>
+                        <td>{{ d.down_expression }}</td>
+                        <td>{{ d.subtype_of_cancer }}</td>
+                        <td>{{ d.cancer_grade }}</td>
+                        <td>{{ d.stage }}</td>
+                        <td>{{ d.treatment_given }}</td>
+                        <td>{{ d.chemotherapy_drug_regimen }}</td>
+                        <td>{{ d.mass_spec_platforms }}</td>
+                        <td>{{ d.mass_spec_acquisition }}</td>
+                        <td>{{ d.search_engine }}</td>
+                        <td>{{ d.bacterial_viral_infection }}</td>
+                        <td>{{ d.remarks }}</td>
+                        <td>{{ d.remark_on_expression }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{% endblock %}
