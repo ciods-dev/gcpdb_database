@@ -18,6 +18,7 @@ def home(request):
 def faq(request):
     return render(request,'gcpdb/faq.html')   
 
+
 # def quick_search(request):
 
 # to test
@@ -29,9 +30,10 @@ def faq(request):
 def quick_search(request):  
 
     protein = request.GET.get('protein')
-    print(protein)
+    print("protein",protein)
     if protein:
         qs = Gcpdb.objects.filter(uniprot__uniprot_id=protein)
+        print("qs",qs)
         context = {'data' :qs }
         return render(request, 'gcpdb/qs_result.html',context)
 
