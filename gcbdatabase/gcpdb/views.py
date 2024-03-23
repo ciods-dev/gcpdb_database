@@ -17,6 +17,8 @@ def home(request):
 
 def faq(request):
     return render(request,'gcpdb/faq.html')   
+def bquery(request):
+    return render(request,'gcpdb/bquery.html')   
 
 
 # def quick_search(request):

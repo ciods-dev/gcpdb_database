@@ -60,18 +60,18 @@
         <div class="welcome-hero-serch-box">
             <div class="welcome-hero-form">
                 <div class="single-welcome-hero-form" style="width: 100%;">
-                    <h3>what?</h3>
+                    <h3>search here</h3>
                     <form action="index.html">
-                        <input type="text" placeholder="Ex: protein, peptide, drug, analytics" />
+                        <input type="text" placeholder="Ex: protein, peptide, drug, analytics" id="protein" />
                     </form>
-                    <!-- <div class="welcome-hero-form-icon">
+                    <div class="welcome-hero-form-icon">
                         <i class="flaticon-list-with-dots"></i>
-                    </div> -->
+                    </div>
                 </div>
      
             </div>
             <div class="welcome-hero-serch">
-                <button class="welcome-hero-btn" onclick=redirectToQSearch() >
+                <button class="welcome-hero-btn" onclick=redirectToQSearch()>
                      Browse  <i data-feather="search"></i> 
                 </button>
             </div>
@@ -507,43 +507,47 @@
                 <div class="single-ststistics-box">
                     <div class="statistics-content">
                         <div class="counter">90 </div> <span>K+</span>
-                    </div>
-                </div>
-            </div>
+                    </div><!--/.statistics-content-->
+                    <h3>listings</h3>
+                </div><!--/.single-ststistics-box-->
+            </div><!--/.col-->
             <div class="col-md-3 col-sm-6">
                 <div class="single-ststistics-box">
                     <div class="statistics-content">
                         <div class="counter">40</div> <span>k+</span>
-                    </div>
+                    </div><!--/.statistics-content-->
                     <h3>listing categories</h3>
-                </div>
-            </div>
+                </div><!--/.single-ststistics-box-->
+            </div><!--/.col-->
             <div class="col-md-3 col-sm-6">
                 <div class="single-ststistics-box">
                     <div class="statistics-content">
                         <div class="counter">65</div> <span>k+</span>
-                    </div>
+                    </div><!--/.statistics-content-->
                     <h3>visitors</h3>
-                </div>
-            </div>
+                </div><!--/.single-ststistics-box-->
+            </div><!--/.col-->
             <div class="col-md-3 col-sm-6">
                 <div class="single-ststistics-box">
                     <div class="statistics-content">
                         <div class="counter">50</div> <span>k+</span>
-                    </div>
+                    </div><!--/.statistics-content-->
                     <h3>happy clients</h3>
-                </div>
+                </div><!--/.single-ststistics-box-->
             </div><!--/.col-->
         </div><!--/.statistics-counter-->	
     </div><!--/.container-->
 
 </section><!--/.counter-->	
 <!-- statistics end -->
+
+
 <script>
-  function redirectToQSearch() {
-      var proteinValue = document.getElementById('protein').value;
-      var url = "{% url 'gcpdb:quick_search' %}?protein=" + encodeURIComponent(proteinValue);
-      window.location.href = url;
-  }
+    function redirectToQSearch() {
+        var proteinValue = document.getElementById('protein').value;
+        var url = "{% url 'gcpdb:quick_search' %}?protein=" + encodeURIComponent(proteinValue);
+        window.location.href = url;
+    }
 </script>
+
 {% endblock %}
