@@ -180,7 +180,7 @@ nav.navbar.bootsnav {
     color: #1b1e20;
     font-size: 20px;
     font-weight: 700;
-    padding: 34px 0px;
+    padding: 10px 0px;
     text-transform:capitalize;
 }
 .navbar-header a.navbar-brand span{display: inline-block;color:#c57af7;text-transform:capitalize;}
@@ -189,7 +189,7 @@ nav.navbar.bootsnav {
 /*.navbar-brand*/
 
 /*.nav li*/
-nav.navbar.bootsnav ul.nav > li > a {
+/* nav.navbar.bootsnav ul.nav > li > a {
     color: #859098;
     font-size: 14px;
     font-weight: 500;
@@ -211,7 +211,7 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
     font-size: 8px;
     margin-left: 15px;
 }
-.wrap-sticky nav.navbar.bootsnav.sticked ul.nav > li > a{padding:34px 21px;}
+.wrap-sticky nav.navbar.bootsnav.sticked ul.nav > li > a{padding:34px 21px;} */
 /*.nav li*/
 
 /*.menu-ui-design*/
@@ -228,14 +228,14 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
 /*.menu-ui-design*/
 
 /*.navbar-toggle */
-nav.navbar.bootsnav .navbar-toggle {
+/* nav.navbar.bootsnav .navbar-toggle {
     position: fixed;
     background-color: transparent;
     border: 1px solid #9675e2;
     padding: 10px;
     top: 0;
 }
-nav.navbar.bootsnav .navbar-toggle i{color: #b798e9;}
+nav.navbar.bootsnav .navbar-toggle i{color: #b798e9;} */
 /*.navbar-toggle */
 
 /*-------------------------------------
@@ -287,14 +287,14 @@ nav.navbar.bootsnav .navbar-toggle i{color: #b798e9;}
 .single-welcome-hero-form {
     position: relative;
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     align-items: center;
     width: 50%;
-    padding: 0 30px;
+    /* padding: 0 30px; */
 }
 .single-welcome-hero-form:first-child{border-right: 1px solid #edeff1;}
 .single-welcome-hero-form input {
-    margin-left: 10px;
+    /* margin-left: 10px; */
     height: 70px;
     width: 300px;
     border: 0;

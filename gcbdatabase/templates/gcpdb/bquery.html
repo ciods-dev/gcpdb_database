@@ -1,0 +1,166 @@
+
+{% extends 'gcpdb/index.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    /* CodePen demo */
+
+
+.big {
+  font-size: 1.2em;
+}
+
+
+
+/* Custom dropdown */
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 10px; /* demo only */
+}
+
+.custom-dropdown select {
+  background-color: #d190f0;
+  color: #fff;
+  font-size: inherit;
+  padding: .5em;
+  padding-right: 2.5em;	
+  border: 0;
+  margin: 0;
+  border-radius: 3px;
+  height: 7vh;
+  text-indent: 0.01px;
+  text-overflow: '';
+  -webkit-appearance: button;
+  margin-top: -4px; /* hide default arrow in chrome OSX */
+}
+
+.custom-dropdown::before,
+.custom-dropdown::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.custom-dropdown::after { /*  Custom dropdown arrow */
+  /* content: "\25BC"; */
+  height: 1em;
+  font-size: .625em;
+  line-height: 1;
+  right: 1.2em;
+  top: 50%;
+  margin-top: -.5em;
+}
+
+.custom-dropdown::before { /*  Custom dropdown arrow cover */
+  width: 2em;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 3px 3px 0;
+}
+.welcome-hero-formi {
+    /* display: flex; */
+    background: #fff;
+    height: 70px;
+    border-radius: 3px;
+    width: 50%;
+}
+.single-welcome-hero-formi {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 50%;
+    padding: 10px 30px;
+}
+.single-welcome-hero-formi:first-child{border-right: 1px solid #edeff1;}
+.single-welcome-hero-formi input {
+    margin-left: 10px;
+    height: 70px;
+    width: 300px;
+    border: 0;
+    background: transparent;
+}
+.single-welcome-hero-formi input[type="text"]{
+    font-size: 14px;
+    color: #859098;
+    text-transform: capitalize;
+    font-weight: 500;
+    margin-left: 4px;
+}
+.welcome-hero-formi-icon {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    color: #252d32;
+}
+
+
+</style>
+
+<div class="container">
+
+
+<div class="row">
+    
+
+    <div class="col d-flex justify-content-end">
+        <div class="welcome-hero-serch-box">
+            <div class="welcome-hero-formi">
+        <span class="custom-dropdown big" style="height: 8vh;">
+            <select>    
+                <option>Sherlock Holmes</option>
+                <option>The Great Gatsby</option>  
+                <option>V for Vendetta</option>
+                <option>The Wolf of Wallstreet</option>
+                <option>Quantum of Solace</option>
+            </select>
+        </span>
+    </div></div>
+    </div>
+    <div class="col d-flex justify-content-start">
+        <div class="welcome-hero-serch-box">
+        <div class="welcome-hero-formi">
+            <div class="single-welcome-hero-form">
+                <form >
+                    <input type="text" style="background-color: #d6c7dd;">
+                </form>
+             
+            </div>
+    
+        </div>
+        <div class="welcome-hero-serch">
+            <button class="welcome-hero-btn" onclick=>
+                 Browse  <i data-feather="search"></i> 
+            </button>
+        </div></div>
+    </div>
+</div>
+
+    
+</div>
+<script>
+    /* JS for demo only */
+var colors = ['E6E6FA', 'E6E6FA', 'E6E6FA', 'E6E6FA', 'E6E6FA', 'E6E6FA', 'E6E6FA'];
+
+colors.each(function (color) {
+  $$('.color-picker')[0].insert(
+    '<div class="square" style="background: #' + color + '"></div>'
+  );
+});
+
+$$('.color-picker')[0].on('click', '.square', function(event, square) {
+  background = square.getStyle('background');
+  $$('.custom-dropdown select').each(function (dropdown) {
+    dropdown.setStyle({'background' : background});
+  });
+});
+
+
+</script>
+
+  {% endblock %}
