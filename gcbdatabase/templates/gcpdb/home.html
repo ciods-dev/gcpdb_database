@@ -29,6 +29,15 @@
       
     }
 
+    #searchType {
+  padding: 8px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 150px; /* Adjust width as needed */
+}
+
     /* .col-md-6 {
         width: calc(50% - 20px);
         margin-bottom: 20px;
@@ -54,27 +63,31 @@
         <div class="welcome-hero-txt">
             <h2>Welcome to  Gastric cancer ProteomicsDb<br>  </h2>
             <p>
-                <!-- Find Best Place, Restaurant, Hotel, Real State and many more think in just One click  -->
+    
             </p>
         </div>
         <div class="welcome-hero-serch-box">
             <div class="welcome-hero-form">
                 <div class="single-welcome-hero-form" style="width: 100%;">
-                    <h3>search here</h3>
-                    <form action="index.html">
-                        <input type="text" placeholder="Ex: protein, peptide, drug, analytics" id="protein" />
-                    </form>
-                    <div class="welcome-hero-form-icon">
-                        <i class="flaticon-list-with-dots"></i>
-                    </div>
+                    <!-- <h3>search here</h3> -->
+                    <select id="searchType">
+                      <option value="Uniprot">Uniprot</option>
+                      <option value="RefSeq">RefSeq</option>
+                      
+                  </select>
+                  <input type="text" placeholder="Search Here" id="searchInput" />
+                  <button type="button" class="welcome-hero-btn" onclick="redirectToQSearch()">
+                      Browse <i data-feather="search"></i>
+                  </button>
+                    
                 </div>
      
             </div>
-            <div class="welcome-hero-serch">
+            <!-- <div class="welcome-hero-serch">
                 <button class="welcome-hero-btn" onclick=redirectToQSearch()>
                      Browse  <i data-feather="search"></i> 
                 </button>
-            </div>
+            </div> -->
         </div>
     </div>
 
@@ -542,12 +555,29 @@
 <!-- statistics end -->
 
 
-<script>
+<!-- <script>
     function redirectToQSearch() {
-        var proteinValue = document.getElementById('protein').value;
+        var proteinValue = document.getElementById('Uniprot').value;
         var url = "{% url 'gcpdb:quick_search' %}?protein=" + encodeURIComponent(proteinValue);
         window.location.href = url;
     }
+</script> -->
+
+<script>
+  function redirectToQSearch() {
+      var searchType = document.getElementById('searchType').value;
+      var searchInput = document.getElementById('searchInput').value;
+      
+      // Redirect to the appropriate URL based on the selected search type and input
+      if (searchType === "Uniprot") {
+          window.location.href = "/search/uniprot?query=" + encodeURIComponent(searchInput);
+      } else if (searchType === "RefSeq") {
+          window.location.href = "/search/refseq?query=" + encodeURIComponent(searchInput);
+      } else {
+          // Handle other search types or provide a default behavior
+          console.error("Invalid search type");
+      }
+  }
 </script>
 
 {% endblock %}
